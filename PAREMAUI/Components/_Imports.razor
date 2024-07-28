@@ -5,7 +5,20 @@
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.JSInterop
-@using PAREMAUI
-@using PAREMAUI.Components
 
-@inject IJSRuntime Js
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+
+@using PAREMAUI
+@using PAREMAUI.Essentials
+@using PAREMAUI.Components
+@using PAREMAUI.Components.Shared
+
+@using MudBlazor
+
+@inject ISnackbar _snackBar
+@inject IDialogService _dialogService
+@inject NavigationManager _navigationManager
+@inject IJSRuntime _jsRuntime
+@inject IDialogService _dialog
