@@ -1,0 +1,66 @@
+﻿@page "/account/login"
+@layout EmptyLayout
+<div class="tw-mt-7 tw-bg-white">
+    <div class="tw-p-4 sm:tw-p-7">
+        <div class="tw-text-center">
+            <h1 class="tw-block tw-text-2xl tw-font-bold tw-text-gray-800">Iniciar sesión</h1>
+            <p class="tw-mt-2 tw-text-sm tw-text-gray-600">
+                No tienes una cuenta?
+                <a class="tw-font-medium tw-text-blue-600 tw-decoration-2 hover:tw-underline" href="/account/register"> Regístrate aquí </a>
+            </p>
+        </div>
+
+        <div class="tw-mt-5">
+            <button type="button" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-x-2 tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-px-4 tw-py-3 tw-text-sm tw-font-medium tw-text-gray-800 tw-shadow-sm hover:tw-bg-gray-50 disabled:tw-pointer-events-none disabled:tw-opacity-50">
+                <svg class="tw-h-auto tw-w-4" width="46" height="47" viewBox="0 0 46 47" fill="none">
+                    <path d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z" fill="#4285F4" />
+                    <path d="M23.4694 47C29.8061 47 35.1161 44.9144 39.0179 41.3012L31.625 35.5437C29.6301 36.9244 26.9898 37.8937 23.4987 37.8937C17.2793 37.8937 12.0281 33.7812 10.1505 28.1412L9.88649 28.1706L2.61097 33.7812L2.52296 34.0456C6.36608 41.7125 14.287 47 23.4694 47Z" fill="#34A853" />
+                    <path d="M10.1212 28.1413C9.62245 26.6725 9.32908 25.1156 9.32908 23.5C9.32908 21.8844 9.62245 20.3275 10.0918 18.8588V18.5356L2.75765 12.8369L2.52296 12.9544C0.909439 16.1269 0 19.7106 0 23.5C0 27.2894 0.909439 30.8731 2.49362 34.0456L10.1212 28.1413Z" fill="#FBBC05" />
+                    <path d="M23.4694 9.07688C27.8699 9.07688 30.8622 10.9863 32.5344 12.5725L39.1645 6.11C35.0867 2.32063 29.8061 0 23.4694 0C14.287 0 6.36607 5.2875 2.49362 12.9544L10.0918 18.8588C11.9987 13.1894 17.25 9.07688 23.4694 9.07688Z" fill="#EB4335" />
+                </svg>
+                Iniciar con Google
+            </button>
+            <button type="button" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-x-2 tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-px-4 tw-py-3 tw-text-sm tw-font-medium tw-text-gray-800 tw-shadow-sm hover:tw-bg-gray-50 disabled:tw-pointer-events-none disabled:tw-opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-auto tw-w-4" width="46" height="47" viewBox="0 0 46 47" fill="url(#a)">
+                    <defs>
+                        <linearGradient x1="50%" x2="50%" y1="97.078%" y2="0%" id="a">
+                            <stop offset="0%" stop-color="#0062E0" />
+                            <stop offset="100%" stop-color="#19AFFF" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z" />
+                    <path fill="#FFF" d="m25 23 .8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z" />
+                </svg>
+                Iniciar con Facebook
+            </button>
+            <div class="tw-flex tw-items-center tw-py-3 tw-text-xs tw-uppercase tw-text-gray-400 before:tw-me-6 before:tw-flex-1 before:tw-border-t before:tw-border-gray-200 after:tw-ms-6 after:tw-flex-1 after:tw-border-t after:tw-border-gray-200">Ó</div>
+
+            <!-- Form -->
+            <EditForm Model="LoginModel" OnValidSubmit="LogIn">
+                <div class="tw-grid tw-gap-y-4">
+                    <!-- Form Group -->
+                    <div>
+                        <label for="email" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Email o teléfono</label>
+                        <input @bind="LoginModel.EmailOrPhoneNumber" type="text" name="emailOrPhoneNumber" id="emailOrPhoneNumber" class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" placeholder="Email o número de teléfono" required="">
+                    </div>
+                    <!-- End Form Group -->
+                    <!-- Form Group -->
+                    <div>
+                        <label for="password" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Contraseña</label>
+                        <input @bind="LoginModel.Password"
+                               minlength="8"
+                               type="password"
+                               name="password"
+                               id="password"
+                               placeholder="••••••••"
+                               class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" required="">
+                    </div>
+                    <!-- End Form Group -->
+
+                    <button type="submit" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-x-2 tw-rounded-lg tw-border tw-border-transparent tw-bg-blue-600 tw-px-4 tw-py-3 tw-text-sm tw-font-semibold tw-text-white hover:tw-bg-blue-700 disabled:tw-pointer-events-none disabled:tw-opacity-50">Iniciar sesión</button>
+                </div>
+            </EditForm>
+            <!-- End Form -->
+        </div>
+    </div>
+</div>

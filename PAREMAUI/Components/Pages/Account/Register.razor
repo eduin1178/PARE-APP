@@ -1,0 +1,125 @@
+﻿@page "/account/register"
+@layout EmptyLayout
+<div class="tw-mt-7 tw-bg-white">
+    <div class="tw-p-4 sm:tw-p-7">
+        <div class="tw-text-center">
+            <h1 class="tw-block tw-text-2xl tw-font-bold tw-text-gray-800">Crea tu cuenta</h1>
+            <p class="tw-mt-2 tw-text-sm tw-text-gray-600">
+                ¿Ya tienes una cuenta?
+                <a class="tw-font-medium tw-text-blue-600 tw-decoration-2 hover:tw-underline" href="/account/login"> Inicia sesión aquí </a>
+            </p>
+        </div>
+
+        <div class="tw-mt-5">
+            <button type="button" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-mb-2 tw-gap-x-2 tw-rounded-lg tw-border tw-border-gray-300 tw-bg-white tw-px-4 tw-py-3 tw-text-sm tw-font-medium tw-text-gray-800 tw-shadow-sm hover:tw-bg-gray-50 disabled:tw-pointer-events-none disabled:tw-opacity-50">
+                <svg class="tw-h-auto tw-w-4" width="46" height="47" viewBox="0 0 46 47" fill="none">
+                    <path d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z" fill="#4285F4" />
+                    <path d="M23.4694 47C29.8061 47 35.1161 44.9144 39.0179 41.3012L31.625 35.5437C29.6301 36.9244 26.9898 37.8937 23.4987 37.8937C17.2793 37.8937 12.0281 33.7812 10.1505 28.1412L9.88649 28.1706L2.61097 33.7812L2.52296 34.0456C6.36608 41.7125 14.287 47 23.4694 47Z" fill="#34A853" />
+                    <path d="M10.1212 28.1413C9.62245 26.6725 9.32908 25.1156 9.32908 23.5C9.32908 21.8844 9.62245 20.3275 10.0918 18.8588V18.5356L2.75765 12.8369L2.52296 12.9544C0.909439 16.1269 0 19.7106 0 23.5C0 27.2894 0.909439 30.8731 2.49362 34.0456L10.1212 28.1413Z" fill="#FBBC05" />
+                    <path d="M23.4694 9.07688C27.8699 9.07688 30.8622 10.9863 32.5344 12.5725L39.1645 6.11C35.0867 2.32063 29.8061 0 23.4694 0C14.287 0 6.36607 5.2875 2.49362 12.9544L10.0918 18.8588C11.9987 13.1894 17.25 9.07688 23.4694 9.07688Z" fill="#EB4335" />
+                </svg>
+                Regístrate con Google
+            </button>
+            <button type="button" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-x-2 tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-px-4 tw-py-3 tw-text-sm tw-font-medium tw-text-gray-800 tw-shadow-sm hover:tw-bg-gray-50 disabled:tw-pointer-events-none disabled:tw-opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-auto tw-w-4" width="46" height="47" viewBox="0 0 46 47" fill="url(#a)">
+                    <defs>
+                        <linearGradient x1="50%" x2="50%" y1="97.078%" y2="0%" id="a">
+                            <stop offset="0%" stop-color="#0062E0" />
+                            <stop offset="100%" stop-color="#19AFFF" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z" />
+                    <path fill="#FFF" d="m25 23 .8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z" />
+                </svg>
+                Regístrate con Facebook
+            </button>
+            <div class="tw-flex tw-items-center tw-py-3 tw-text-xs tw-uppercase tw-text-gray-400 before:tw-me-6 before:tw-flex-1 before:tw-border-t before:tw-border-gray-200 after:tw-ms-6 after:tw-flex-1 after:tw-border-t after:tw-border-gray-200">Ó</div>
+
+            <!-- Form -->
+            <EditForm Model="RegisterModel" OnValidSubmit="RegisterAccount">
+                <div class="tw-grid tw-gap-y-4">
+                    <!-- Form Group -->
+                    <div>
+                        <label for="ciudad" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Ciudad</label>
+                        <select @bind="RegisterModel.CityId"
+                                id="ciudad"
+                                name="ciudad"
+                                class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+                            @if (DepartmentsCitiesList == null)
+                            {
+                                <option selected>Cargando...</option>
+                            }
+                            else
+                            {
+                                if (DepartmentsCitiesList.Count != 0)
+                                {
+                                    @foreach (var dep in DepartmentsCitiesList)
+                                    {
+                                        <optgroup label="@dep.Name">
+                                            @foreach (var city in dep.Cities)
+                                            {
+                                                <option value="@city.Id">@city.Name</option>
+                                            }
+                                        </optgroup>
+                                    }
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="name" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Nombres</label>
+                        <input @bind="RegisterModel.FirstName" type="text" id="name" name="name" class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" required />
+                    </div>
+                    <div>
+                        <label for="lastName" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Apellidos</label>
+                        <input @bind="RegisterModel.LastName" type="text" id="lastName" name="lastName" class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" required />
+                    </div>
+                    <div>
+                        <label for="phone-input" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Número de teléfono</label>
+                        <div class="tw-relative">
+                            <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-top-0 tw-flex tw-items-center tw-ps-3.5 tw-pointer-events-none">
+                                <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 19 18">
+                                    <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
+                                </svg>
+                            </div>
+                            <input @bind="RegisterModel.PhoneNumber" type="text" id="phone-input" aria-describedby="helper-text-explanation" class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+                                   pattern="3[0-9]{9}"
+                                   placeholder="3104567890"
+                                   required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Email</label>
+                        <div class="tw-relative">
+                            <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3.5 tw-pointer-events-none">
+                                <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                    <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                                    <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                                </svg>
+                            </div>
+                            <input @bind="RegisterModel.Email" type="text" id="email"
+                                   class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" placeholder="name@flowbite.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white">Contraseña</label>
+                        <input @bind="RegisterModel.Password"
+                               minlength="8"
+                               type="password"
+                               name="password"
+                               id="password"
+                               placeholder="••••••••" class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-px-4 tw-py-3 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500" required="">
+                    </div>
+
+                    <button type="submit" class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-x-2 tw-rounded-lg tw-border tw-border-transparent tw-bg-blue-600 tw-px-4 tw-py-3 tw-text-sm tw-font-semibold tw-text-white hover:tw-bg-blue-700 disabled:tw-pointer-events-none disabled:tw-opacity-50">Registrarme</button>
+                </div>
+            </EditForm>
+            <!-- End Form -->
+        </div>
+    </div>
+</div>
+@code {
+
+}

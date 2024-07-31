@@ -45,5 +45,10 @@ namespace PAREMAUI.Essentials
             result.Data = authenticatedUser;
             return result;
         }
+
+        public void Logout()
+        {
+            ((CustomAuthStateProvider)_authenticationStateProvider).LogOut();
+        }
     }
 }

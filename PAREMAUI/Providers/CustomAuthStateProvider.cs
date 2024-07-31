@@ -44,10 +44,6 @@ namespace PAREMAUI.Providers
             }
             var user = res.Data;
 
-            //var jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            //string nameIdentifier = jwt.Claims.FirstOrDefault(c => c.Type == "nameidentifier")?.Value;
-
-
             var identity = new ClaimsIdentity();
             try
             {
@@ -114,10 +110,11 @@ namespace PAREMAUI.Providers
 
         }
 
-        public async Task SignOut()
+        public void LogOut()
         {
             SecureStorage.Remove("accounttoken");
-            _appState.CurrentUser = new LoginResponseModel() ;
+            _appState.CurrentUser = new LoginResponseModel();
+            _client.RemoveAutorization();
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
     }
